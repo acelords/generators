@@ -140,7 +140,7 @@ abstract class GeneratorCommand extends Command
         
         $name = str_replace('\\', '/', $name);
 
-        $module = strtolower($this->argument('module'));
+        $module = Str::studly(strtolower($this->argument('module')));
 
         $modulePath = base_path($this->projectPath . '/' . $module);
 
