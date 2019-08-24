@@ -1,0 +1,52 @@
+{
+    "name": "acelords/generators",
+    "description": "AceLords Project",
+    "type": "library",
+    "keywords": ["acelords", "lexxyungcarter", "acelords products", "acelords generators"],
+    "require": {
+        "php": ">=7.2",
+        "laravel/framework": "5.8.*",
+        "laravel/helpers": "^1.0"
+    },
+    "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.0",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "AceLords\\Generators\\": "src"
+        },
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AceLords\\Generators\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AceLords\\Website\\Providers\\ProjectServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "license": "AceLords Proprietary Licence",
+    "authors": [
+        {
+            "name": "Lexx YungCarter",
+            "email": "spencermainaa@gmail.com"
+        },
+        {
+            "name": "AceLords System Engineers",
+            "email": "info@acelords.space"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
