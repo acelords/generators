@@ -142,7 +142,7 @@ abstract class GeneratorCommand extends Command
 
         $module = strtolower($this->argument('module'));
 
-        $modulePath = base_path($this->projectPath);
+        $modulePath = base_path($this->projectPath . '/' . $module);
 
         return $modulePath . $name . '.php';
     }
