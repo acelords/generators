@@ -19,7 +19,7 @@
     "autoload": {
         "psr-4": {
             "AceLords\\Generators\\": "src"
-        },
+        }
     },
     "autoload-dev": {
         "psr-4": {
