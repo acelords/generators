@@ -22,6 +22,11 @@ abstract class GeneratorCommand extends Command
      * @var string
      */
     protected $type;
+    
+    /**
+     * @var string
+     */
+    protected $projectPath = 'app/Library/Modules';
 
     /**
      * Create a new controller creator command instance.
@@ -135,11 +140,11 @@ abstract class GeneratorCommand extends Command
         
         $name = str_replace('\\', '/', $name);
 
-        $project = strtolower($this->argument('project'));
+        $module = strtolower($this->argument('module'));
 
-        $projectPath = base_path("app");
+        $modulePath = base_path($this->projectPath);
 
-        return $projectPath . $name . '.php';
+        return $modulePath . $name . '.php';
     }
 
     /**
@@ -180,7 +185,7 @@ abstract class GeneratorCommand extends Command
      */
     protected function replaceNamespace(&$stub, $name)
     {
-        $project = ucwords(strtolower($this->argument('project')));
+        $module = ucwords(strtolower($this->argument('module')));
 
         $stub = str_replace(
             [
@@ -195,7 +200,7 @@ abstract class GeneratorCommand extends Command
                 $this->rootNamespace(),
                 $this->userProviderModel(),
                 $this->getDefaultModelTableName($name),
-                $project,
+                $module,
             ],
             $stub
         );
@@ -255,9 +260,9 @@ abstract class GeneratorCommand extends Command
      */
     protected function rootNamespace()
     {
-        $project = ucwords(strtolower($this->argument('project')));
+        $module = ucwords(strtolower($this->argument('module')));
 
-        return 'AceLords\\' . $project;
+        return 'AceLords\\' . $module;
     }
 
     /**
