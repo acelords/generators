@@ -1,6 +1,6 @@
 {
     "name": "acelords/generators",
-    "description": "AceLords Project",
+    "description": "AceLords Generators",
     "type": "library",
     "keywords": ["acelords", "lexxyungcarter", "acelords products", "acelords generators"],
     "require": {
@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AceLords\\Website\\Providers\\ProjectServiceProvider"
+                "AceLords\\Generators\\Providers\\ProjectServiceProvider"
             ],
             "aliases": {
 
