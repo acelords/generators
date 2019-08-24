@@ -23,7 +23,7 @@ class DummyClass
      *
      * @param string $pagination
      *
-     * @return CategoryResourceCollection
+     * @return ModelResourceCollection
      */
     public function get($pagination = 'm')
     {
@@ -37,7 +37,7 @@ class DummyClass
      * find model record
      * @param $id
      *
-     * @return CartResource
+     * @return ModelResource
      */
     public function find($id)
     {
@@ -51,7 +51,7 @@ class DummyClass
      *
      * @param string $pagination
      *
-     * @return CategoryResourceCollection
+     * @return ModelResourceCollection
      */
     public function search($pagination = 'm')
     {
