@@ -16,6 +16,7 @@ use AceLords\Generators\Console\Generators\ModelMakeCommand;
 use AceLords\Generators\Console\Generators\NotificationMakeCommand;
 use AceLords\Generators\Console\Generators\PolicyMakeCommand;
 use AceLords\Generators\Console\Generators\ProviderMakeCommand;
+use AceLords\Generators\Console\Generators\RepositoryMakeCommand;
 use AceLords\Generators\Console\Generators\RequestMakeCommand;
 use AceLords\Generators\Console\Generators\ResourceMakeCommand;
 use AceLords\Generators\Console\Generators\RuleMakeCommand;
@@ -42,6 +43,7 @@ class ProjectServiceProvider extends ServiceProvider
         NotificationMakeCommand::class,
         PolicyMakeCommand::class,
         ProviderMakeCommand::class,
+        RepositoryMakeCommand::class,
         RequestMakeCommand::class,
         ResourceMakeCommand::class,
         RuleMakeCommand::class,
