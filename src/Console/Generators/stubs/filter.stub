@@ -1,0 +1,24 @@
+<?php
+
+namespace DummyNamespace;
+
+use Agog\Osmose\Library\FormFilter;
+use Agog\Osmose\Library\FilterInterface;
+
+class DummyClass extends FormFilter implements FilterInterface
+{
+
+    /**
+     * Defines a set of rules that will be filtered
+     */
+    public function residue()
+    {
+        return [
+            "param"    => function($value, $query) {
+                return $query->where(function($q) use ($value) {
+                    return $q->where('param1', 'like',  $value . "%");
+                });
+            }
+        ];
+    }
+}

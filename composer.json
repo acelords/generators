@@ -5,6 +5,7 @@
     "keywords": ["acelords", "lexxyungcarter", "acelords products", "acelords generators"],
     "require": {
         "php": ">=7.2",
+        "agog/osmose": "^0.1.0",
         "laravel/framework": "^5.5|^6.0",
         "laravel/helpers": "^1.0"
     },

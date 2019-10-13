@@ -23,6 +23,7 @@ use AceLords\Generators\Console\Generators\RuleMakeCommand;
 use AceLords\Generators\Console\Generators\ProjectMakeCommand;
 use AceLords\Generators\Console\Generators\MiddlewareMakeCommand;
 use AceLords\Generators\Console\Generators\ControllerMakeCommand;
+use AceLords\Generators\Console\Generators\FilterMakeCommand;
 
 class ProjectServiceProvider extends ServiceProvider
 {
@@ -50,6 +51,7 @@ class ProjectServiceProvider extends ServiceProvider
         ProjectMakeCommand::class,
         MiddlewareMakeCommand::class,
         ControllerMakeCommand::class,
+        FilterMakeCommand::class,
     ];
     
     /**
