@@ -8,7 +8,7 @@
 
 namespace AceLords\Generators\Console\Generators;
 
-class WidgetMakeCommand
+class WidgetMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
