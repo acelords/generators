@@ -25,6 +25,8 @@ use AceLords\Generators\Console\Generators\MiddlewareMakeCommand;
 use AceLords\Generators\Console\Generators\ControllerMakeCommand;
 use AceLords\Generators\Console\Generators\FilterMakeCommand;
 use AceLords\Generators\Console\Generators\WidgetMakeCommand;
+use AceLords\Generators\Console\Generators\FacadeMakeCommand;
+use AceLords\Generators\Console\Generators\ServiceMakeCommand;
 
 class ProjectServiceProvider extends ServiceProvider
 {
@@ -54,6 +56,8 @@ class ProjectServiceProvider extends ServiceProvider
         ControllerMakeCommand::class,
         FilterMakeCommand::class,
         WidgetMakeCommand::class,
+        FacadeMakeCommand::class,
+        ServiceMakeCommand::class,
     ];
     
     /**
