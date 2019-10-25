@@ -10,6 +10,9 @@ class DummyClass implements ShouldQueue
 {
     use InteractsWithQueue;
 
+    public $tries = 3;
+    public $timeout = 120;
+
     /**
      * Create the event listener.
      *

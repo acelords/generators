@@ -7,9 +7,12 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class DummyClass extends Notification
+class DummyClass extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    public $tries = 3;
+    public $timeout = 120;
 
     /**
      * Create a new notification instance.
@@ -67,7 +70,12 @@ class DummyClass extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'title' => $this->user->name . ' just performed an action!',
+            'message' => 'Email: ' . $this->user->email,
+            'link' => '#',
+            'icon' => 'alert_outline',
+            'alert' => 'info',
+            'ip_address' => request()->ip(),
         ];
     }
 }
