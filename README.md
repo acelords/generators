@@ -50,7 +50,7 @@ It's also possible to support the project on [Patreon](https://www.patreon.com/l
 This funding is used for maintaining the project and adding new features into Code Style plus other open-source repositories.
 
 ## Licence 
-Licensed under the [DBAD](https://dbad-license.org/)
+Licensed under [DBAD](https://dbad-license.org/)
 
 ## Credits
 - [AceLords Team](https://acelords.space)
