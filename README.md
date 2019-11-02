@@ -48,3 +48,9 @@ If you've found this useful and would like to buy the maintainers a coffee (or a
 It's also possible to support the project on [Patreon](https://www.patreon.com/lexxyungcarter) or by buying products and merchandise at [Marketplace](https://store.acelords.space).
 
 This funding is used for maintaining the project and adding new features into Code Style plus other open-source repositories.
+
+## Licence 
+Licensed under the [DBAD](https://dbad-license.org/)
+
+## Credits
+- [AceLords Team](https://acelords.space)
