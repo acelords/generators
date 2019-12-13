@@ -226,7 +226,7 @@ abstract class GeneratorCommand extends Command
     {
         $names = explode('\\', $name);
         $tableName = $names[count($names) - 1];
-        return Str::snake($tableName);
+        return Str::plural(Str::snake($tableName));
     }
 
     /**
