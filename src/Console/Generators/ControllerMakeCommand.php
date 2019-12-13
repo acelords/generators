@@ -47,6 +47,8 @@ class ControllerMakeCommand extends GeneratorCommand
             $stub = '/stubs/controller.invokable.stub';
         } elseif ($this->option('resource')) {
             $stub = '/stubs/controller.stub';
+        } elseif ($this->option('repo')) {
+            $stub = '/stubs/controller.repo.stub';
         }
 
         if ($this->option('api') && is_null($stub)) {
@@ -181,6 +183,7 @@ class ControllerMakeCommand extends GeneratorCommand
             ['invokable', 'i', InputOption::VALUE_NONE, 'Generate a single method, invokable controller class.'],
             ['parent', 'p', InputOption::VALUE_OPTIONAL, 'Generate a nested resource controller class.'],
             ['api', null, InputOption::VALUE_NONE, 'Exclude the create and edit methods from the controller.'],
+            ['repo', null, InputOption::VALUE_NONE, 'Exclude the create and edit methods from the controller and set it for repository pattern.'],
         ];
     }
 }

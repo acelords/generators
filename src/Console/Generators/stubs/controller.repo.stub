@@ -1,0 +1,107 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class DummyClass extends Controller
+{
+    protected $repo;
+
+    /**
+     * constructor
+     *
+     * @param DummyClassRepository $repo
+     */
+    public function __construct(DummyClassRepository $repo)
+    {
+        $this->repo = $repo;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return $this->repo->get();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $resp = $this->repo->create();
+
+        if($resp) {
+            if(instanceOfResource($resp))
+                return $resp;
+
+            return response()->json([
+                'message' => 'DummyClass Added',
+                'alert' => 'success'
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => 'An error occurred',
+            'alert' => 'error'
+        ], 422);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return $this->repo->find($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $resp = $this->repo->update($id);
+    
+        if($resp) {
+            if(instanceOfResource($resp))
+                return $resp;
+        
+            return response()->json([
+                'message' => 'DummyClass Added',
+                'alert' => 'success'
+            ], 200);
+        }
+    
+        return response()->json([
+            'message' => 'An error occurred',
+            'alert' => 'error'
+        ], 422);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        return $this->repo->delete($id);
+    }
+    
+}
