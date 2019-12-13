@@ -12,9 +12,9 @@ class DummyClass extends Controller
     /**
      * constructor
      *
-     * @param DummyClassRepository $repo
+     * @param Repository $repo
      */
-    public function __construct(DummyClassRepository $repo)
+    public function __construct(Repository $repo)
     {
         $this->repo = $repo;
     }
@@ -33,7 +33,7 @@ class DummyClass extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -44,7 +44,7 @@ class DummyClass extends Controller
                 return $resp;
 
             return response()->json([
-                'message' => 'DummyClass Added',
+                'message' => 'Entity Added',
                 'alert' => 'success'
             ], 200);
         }
@@ -71,7 +71,7 @@ class DummyClass extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -82,7 +82,7 @@ class DummyClass extends Controller
                 return $resp;
         
             return response()->json([
-                'message' => 'DummyClass Added',
+                'message' => 'Entity Updated',
                 'alert' => 'success'
             ], 200);
         }
