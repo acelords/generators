@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class DummyClass
 {
@@ -27,7 +27,7 @@ class DummyClass
      */
     public function get($pagination = 'm')
     {
-        $data = $this->model->orderBy('name', 'desc')
+        $data = $this->model->latest()
             ->paginate(core_paginate($pagination));
 
         return new ModelResourceCollection($data);
@@ -41,9 +41,9 @@ class DummyClass
      */
     public function find($id)
     {
-        $cart = $this->model->findOrFail($id);
+        $item = $this->model->findOrFail($id);
 
-        return new ModelResource($cart);
+        return new ModelResource($item);
     }
 
     /**
@@ -59,7 +59,7 @@ class DummyClass
 
         $data = $this->model
             ->where('name', 'LIKE', '%' . $term . '%')
-            ->orderBy('name', 'desc')
+            ->latest()
             ->paginate(core_paginate($pagination));
 
         return new ModelResourceCollection($data);
@@ -83,7 +83,7 @@ class DummyClass
         } catch (\Exception $e) {
             DB::rollBack();
 
-            env('APP_DEBUG') ? ddd($e->getMessage()) : false;
+            env('APP_DEBUG') ? dde($e->getMessage()) : false;
 
             return false;
         }
@@ -111,7 +111,7 @@ class DummyClass
         } catch (\Exception $e) {
             DB::rollBack();
 
-            env('APP_DEBUG') ? ddd($e->getMessage()) : false;
+            env('APP_DEBUG') ? dde($e->getMessage()) : false;
 
             return false;
         }
