@@ -27,10 +27,11 @@ use AceLords\Generators\Console\Generators\FilterMakeCommand;
 use AceLords\Generators\Console\Generators\WidgetMakeCommand;
 use AceLords\Generators\Console\Generators\FacadeMakeCommand;
 use AceLords\Generators\Console\Generators\ServiceMakeCommand;
+use AceLords\Generators\Console\Generators\SeederMakeCommand;
 
 class ProjectServiceProvider extends ServiceProvider
 {
-    
+
     /**
      * the available acelords generators
      *
@@ -58,8 +59,9 @@ class ProjectServiceProvider extends ServiceProvider
         WidgetMakeCommand::class,
         FacadeMakeCommand::class,
         ServiceMakeCommand::class,
+        SeederMakeCommand::class,
     ];
-    
+
     /**
      * Register services.
      *

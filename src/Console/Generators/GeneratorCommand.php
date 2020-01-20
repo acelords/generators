@@ -9,6 +9,8 @@ use Illuminate\Console\Command;
 
 abstract class GeneratorCommand extends Command
 {
+    protected $className;
+
     /**
      * The filesystem instance.
      *
@@ -22,7 +24,7 @@ abstract class GeneratorCommand extends Command
      * @var string
      */
     protected $type;
-    
+
     /**
      * @var string
      */
@@ -57,6 +59,8 @@ abstract class GeneratorCommand extends Command
     public function handle()
     {
         $name = $this->qualifyClass($this->getNameInput());
+
+        $this->className = $this->setClassName($name);
 
         $path = $this->getPath($name);
 
@@ -137,7 +141,7 @@ abstract class GeneratorCommand extends Command
     protected function getPath($name)
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
-        
+
         $name = str_replace('\\', '/', $name);
 
         $module = Str::studly(strtolower($this->argument('module')));
@@ -193,6 +197,7 @@ abstract class GeneratorCommand extends Command
                 'DummyRootNamespace',
                 'NamespacedDummyUserModel',
                 'DummyModelTableName',
+                'DummySeederClassName',
                 'DummyAceLordsProjectName',
             ],
             [
@@ -200,6 +205,7 @@ abstract class GeneratorCommand extends Command
                 $this->rootNamespace(),
                 $this->userProviderModel(),
                 $this->getDefaultModelTableName($name),
+                $this->getSeederNameFromClassName(),
                 $module,
             ],
             $stub
@@ -244,6 +250,16 @@ abstract class GeneratorCommand extends Command
     }
 
     /**
+     * @param $name
+     *
+     * @return string
+     */
+    protected function setClassName($name) : string
+    {
+        return str_replace($this->getNamespace($name).'\\', '', $name);
+    }
+
+    /**
      * Get the desired class name from the input.
      *
      * @return string
@@ -277,6 +293,26 @@ abstract class GeneratorCommand extends Command
         $provider = config("auth.guards.{$guard}.provider");
 
         return config("auth.providers.{$provider}.model");
+    }
+
+    /**
+     * Get seeder name.
+     *
+     * @return string
+     */
+    protected function getSeederName($name)
+    {
+        return $name . 'TableSeeder';
+    }
+
+    /**
+     * Get seeder name.
+     *
+     * @return string
+     */
+    protected function getSeederNameFromClassName()
+    {
+        return $this->className . 'TableSeeder';
     }
 
     /**
