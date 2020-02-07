@@ -7,6 +7,8 @@ An AceLords composer package for use with AceLords projects.
 acelords:make-channel           Create a new AceLords project channel class
 acelords:make-command           Create a new AceLords project command
 acelords:make-controller        Create a new AceLords project controller class
+acelords:make-controller --api  Create a new AceLords project controller class containing only the api methods
+acelords:make-controller --repo Create a new AceLords project controller class based on a model repository
 acelords:make-event             Create a new AceLords project event class
 acelords:make-facade            Create a new AceLords project facade class
 acelords:make-filter            Create a new AceLords project filter class
@@ -40,12 +42,65 @@ Can be installed via composer
 composer install acelords/generators
 ```
 
+## Responses methods
+It would be a nice idea to add these methods to the base Controller for easier modifications
+```php
+/**
+     * return a standardized error message
+     *
+     * @param string $message
+     * @param int $code
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function respError($message = 'An error occurred', $code = 422)
+    {
+        return response()->json([
+            'message' => $message,
+            'alert' => 'error',
+        ], $code);
+    }
+
+    /**
+     * return a standardized success message
+     *
+     * @param string $message
+     * @param int $code
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function respSuccess($message = 'Action Successful', $code = 200)
+    {
+        return response()->json([
+            'message' => $message,
+            'alert' => 'success',
+        ], $code);
+    }
+
+    /**
+     * provide a common function to return messages to the user
+     *
+     * @param $result
+     * @param string $messageOnSuccess
+     * @param string $messageOnError
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function respJuicer($result, $messageOnSuccess = 'Action Successful', $messageOnError = 'An error occurred')
+    {
+        if($result)
+            return $this->respSuccess($messageOnSuccess);
+
+        return $this->respError($messageOnError);
+    }
+```
+
 ## Support
 If you've found this useful and would like to buy the maintainers a coffee (or a Tesla, we're not picky), feel free to do so.
 
 
 ### Crowdfunding
-It's also possible to support the project on [Patreon](https://www.patreon.com/lexxyungcarter) or by buying products and merchandise at [Marketplace](https://store.acelords.space).
+It's also possible to support the project on **Github Sponsors**, [Patreon](https://www.patreon.com/acelords) or by buying products and merchandise at [Marketplace](https://store.acelords.space).
 
 This funding is used for maintaining the project and adding new features into Code Style plus other open-source repositories.
 

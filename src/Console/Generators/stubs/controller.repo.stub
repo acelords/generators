@@ -43,16 +43,10 @@ class DummyClass extends Controller
             if(instanceOfResource($resp))
                 return $resp;
 
-            return response()->json([
-                'message' => 'Entity Added',
-                'alert' => 'success'
-            ], 200);
+            return $this->respSuccess('Entity Added');
         }
 
-        return response()->json([
-            'message' => 'An error occurred',
-            'alert' => 'error'
-        ], 422);
+        return $this->respError();
     }
 
     /**
@@ -81,16 +75,10 @@ class DummyClass extends Controller
             if(instanceOfResource($resp))
                 return $resp;
         
-            return response()->json([
-                'message' => 'Entity Updated',
-                'alert' => 'success'
-            ], 200);
+            return $this->respSuccess('Entity Updated');
         }
     
-        return response()->json([
-            'message' => 'An error occurred',
-            'alert' => 'error'
-        ], 422);
+        return $this->respError();
     }
 
     /**

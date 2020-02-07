@@ -21,11 +21,17 @@ class DummyClass extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $resp = myMethod();
+
+        if($resp) {
+            return $this->respSuccess('Entity Added');
+        }
+
+        return $this->respError();
     }
 
     /**
@@ -44,11 +50,17 @@ class DummyClass extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $resp = myMethod();
+
+        if($resp) {
+            return $this->respSuccess('Entity Updated');
+        }
+
+        return $this->respError();
     }
 
     /**
