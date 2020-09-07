@@ -64,12 +64,17 @@ abstract class GeneratorCommand extends Command
 
         $path = $this->getPath($name);
 
+        if(! $path)
+            return false;
+
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
-        if ((! $this->hasOption('force') ||
-             ! $this->option('force')) &&
-             $this->alreadyExists($this->getNameInput())) {
+        if (
+            (! $this->hasOption('force') ||
+            ! $this->option('force')) &&
+            $this->alreadyExists($this->getNameInput())
+        ) {
             $this->error($this->type.' already exists!');
 
             return false;
@@ -136,7 +141,7 @@ abstract class GeneratorCommand extends Command
      * Get the destination class path.
      *
      * @param  string  $name
-     * @return string
+     * @return string|bool
      */
     protected function getPath($name)
     {
@@ -147,6 +152,14 @@ abstract class GeneratorCommand extends Command
         $module = Str::studly(strtolower($this->argument('module')));
 
         $modulePath = base_path($this->projectPath . '/' . $module);
+
+        // confirm module is indeed installed
+        if (! is_dir($modulePath)) {
+            if(! $this->confirm("The module '$module' does not exist. Create it?", false)) {
+                $this->error("Creating module '$module' halted!");
+                return false;
+            }
+        }
 
         return $modulePath . $name . '.php';
     }
